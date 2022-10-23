@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate</title>
+    <style>
+        div {
+            background-color: tomato;
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .tag {
+            background-color: teal;
+        }
+        nav {
+            position: fixed;
+            background-color: thistle;
+            top:100px;
+            left:300px;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="tag"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <nav></nav>
+    <script>
+        const box = document.querySelector('.tag');
+        const nav = document.querySelector("nav")
+        console.log(box);
+        box.addEventListener('click', (event)=>{
+            nav.innerHTML = `
+                client - X:${event.clientX} Y:${event.clientY} <br/>
+                page - X:${event.pageX} Y:${event.pageY}
+            `
+        })
+    </script>
+</body>
+</html>
