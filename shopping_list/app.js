@@ -1,30 +1,50 @@
-const inputText = document.querySelector('.application-input');
-const btn = document.querySelector('.application-btn');
-const appList = document.querySelector('.application-list');
+const items = document.querySelector('.items');
+const input = document.querySelector('.footer__input');
+const addBtn = document.querySelector('.footer__button');
 
-btn.addEventListener("click", () => {
-    addList(inputText);
-});
-inputText.addEventListener("keyup", (event) => {
-    if (event.keyCode === 13) {
-        addList(inputText);
+function onAdd() {
+    const text = input.value;
+    if (text === '')
+    {
+        input.focus();
+        return;
     }
-});
-
-function addList(inputText){
-    const span = document.createElement('span');
-    span.setAttribute('class', 'text-span');
-    const delBtn = document.createElement('button');
-    delBtn.setAttribute('class', 'del-btn');
-    delBtn.innerText = "❌";
-    span.innerText = inputText.value;
-    span.appendChild(delBtn);
-    appList.append(span);
-    inputText.value = '';
-    btn.addEventListener("click", "delList");
-};
-
-function delList(event){
-    const span = event.target.parentElement;
-    span.remove();
+    const item = createItem(text);
+    items.appendChild(item);
+    item.scrollIntoView({block:'center'})
+    input.value = '';
+    input.focus();
 }
+
+function createItem(text) {
+    const itemRow  = document.createElement('li');
+    itemRow.setAttribute('class', 'item__row');
+    const itemDivider = document.createElement('div');
+    itemDivider.setAttribute('class', 'divider');
+    const item = document.createElement('div');
+    item.setAttribute('class', 'item');
+    const span = document.createElement('span');
+    span.setAttribute('class', 'item__name');
+    span.innerText = text;
+    const deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('class', 'item__delete');
+    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'
+    deleteBtn.addEventListener('click', () => {
+        items.removeChild(itemRow);
+    })
+
+    item.appendChild(span);
+    item.appendChild(deleteBtn);
+    itemRow.appendChild(item);
+    itemRow.appendChild(itemDivider);
+    return itemRow
+}
+
+addBtn.addEventListener('click', () => {
+    onAdd();
+});
+input.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter'){
+        onAdd();
+    }
+})

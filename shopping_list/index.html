@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping List</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+    <script src="https://kit.fontawesome.com/3399830053.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="application">
-        <section class="application-nav">Shopping List</section>
-        <section class="application-list">
-            
-        </section>
-        <form  onsubmit="return false;">
-            <input type="text" name="list" class="application-input">
-        </form>
-        <section class="application-nav">
-            <button class="application-btn">+</button>
-        </section>
-    </div>
-    <script src="./app.js"></script>
+    <section class="list">
+        <header class="header">
+            Shopping List
+        </header>
+        <ul class="items">
+        </ul>
+        <footer class="footer">
+            <input type="text" class="footer__input">
+            <button class="footer__button">
+                <i class="fas fa-plus"></i>
+            </button>
+        </footer>
+    </section>
 </body>
 </html>
