@@ -1,3 +1,7 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
 body{
     width: 100vw;
     height: 100vh;
@@ -33,4 +37,5 @@ button {
 .ground{
     width: 100vw;
     height:50vh;
+    position: relative;
 }
