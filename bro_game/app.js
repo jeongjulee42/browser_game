@@ -50,6 +50,10 @@ function makeCoordinate(){
     return {left:left, top:top};
 }
 
+function stopGame(event){
+    
+}
+
 playBtn.addEventListener('click', () => {
     playBtn.setAttribute('class','stopBtn');
     carrotNum = 10;
