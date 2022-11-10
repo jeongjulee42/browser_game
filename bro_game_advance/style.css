@@ -41,6 +41,7 @@ padding: 20px;
     font-size: 32px;
     margin-top: 8px;
     border-radius: 20px;
+    visibility: hidden;
 }
 .game__score{
     text-align: center;
@@ -53,6 +54,7 @@ padding: 20px;
     margin-top: 8px;
     line-height : 100%;
     border:3px solid black;
+    visibility: hidden;
 }
 .game__field{
     width: 100%;
