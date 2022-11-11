@@ -10,9 +10,16 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
-const popUp = document.querySelector('.pop-up')
-const popUpText = document.querySelector('.pop-up__message')
-const popUpRefresh = document.querySelector('.pop-up__refresh')
+const popUp = document.querySelector('.pop-up');
+const popUpText = document.querySelector('.pop-up__message');
+const popUpRefresh = document.querySelector('.pop-up__refresh');
+
+
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
 
 let started = false;
 let score = 0;
@@ -45,19 +52,35 @@ function onFieldClick(event) {
     if(target.matches('.carrot')){
         target.remove();
         score ++;
+        playSound(carrotSound);
         updateSocreBoard();
         if(score === CARROT_COUNT){
             finishGame(true);
         }
     } else if (target.matches('.bug')){
-        stopGameTimer();
         finishGame(false);
     }
+}
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
 }
 
 function finishGame(win) {
     started = false;
     hideGameButton();
+    if(win){
+        playSound(winSound);
+    } else{
+        playSound(bugSound);
+    }
+    stopGameTimer();
+    stopSound(bgSound);
     showPopUpWithText(win? 'You Won' : 'You Lost');
 }
 
@@ -71,12 +94,15 @@ function startGame(){
     showStopButton();
     showTimerAndScore();
     startGameTimer();
+    playSound(bgSound);
 };
 function stopGame(){
     started = false;
     stopGameTimer();
     hideGameButton();
     showPopUpWithText('REPLAY?');
+    playSound(alertSound);
+    stopSound(bgSound);
 };
 
 function hideGameButton(){
@@ -123,6 +149,7 @@ function showTimerAndScore(){
 }
 
 function initGame(){
+    score = 0;
     field.innerHTML = '';
     gameScore.innerText = CARROT_COUNT;
     addItem('carrot', CARROT_COUNT, 'imgs/carrot.png');
