@@ -5,6 +5,7 @@ button {
 }
 body{
     text-align: center;
+    background-color: black;
 }
 .game{
     background: url(imgs/background.png) center/cover;
@@ -42,6 +43,8 @@ padding: 20px;
     margin-top: 8px;
     border-radius: 20px;
     visibility: hidden;
+    user-select: none;
+    cursor: auto;
 }
 .game__score{
     text-align: center;
@@ -55,6 +58,8 @@ padding: 20px;
     line-height : 100%;
     border:3px solid black;
     visibility: hidden;
+    user-select: none;
+    cursor: auto;
 }
 .game__field{
     width: 100%;
@@ -88,4 +93,11 @@ padding: 20px;
     display: block;
     font-size: 38px;
 
+}
+.carrot, .bug {
+    transition: transform 100ms ease-in;
+}
+.carrot:hover,
+.bug:hover {
+    transform: scale(1.1);
 }
