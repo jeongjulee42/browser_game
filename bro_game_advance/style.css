@@ -56,7 +56,7 @@ padding: 20px;
     border-radius: 50%;
     margin-top: 8px;
     line-height : 100%;
-    border:3px solid black;
+    border:2px solid black;
     visibility: hidden;
     user-select: none;
     cursor: auto;
